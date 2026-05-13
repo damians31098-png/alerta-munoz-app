@@ -16,5 +16,6 @@ jobs:
       - name: Build with Buildozer
         run: |
           export PATH=$PATH:$HOME/.local/bin
-          # Forzamos la aceptación de licencias y compilamos
+          # Forzamos la versión del NDK estable antes de compilar
+          sed -i 's/^[# ]*android.ndk =.*/android.ndk = 25b/' buildozer.spec
           yes | buildozer -v android debug
