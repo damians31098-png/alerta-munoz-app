@@ -16,6 +16,5 @@ jobs:
       - name: Build with Buildozer
         run: |
           export PATH=$PATH:$HOME/.local/bin
-          # Aceptamos las licencias de Android antes de arrancar
-          yes | buildozer android clean
+          # Aceptamos las licencias de Android y compilamos directo
           yes | buildozer -v android debug
