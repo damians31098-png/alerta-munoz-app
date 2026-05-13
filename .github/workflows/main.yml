@@ -16,6 +16,7 @@ jobs:
       - name: Build with Buildozer
         run: |
           export PATH=$PATH:$HOME/.local/bin
-          # Forzamos la versión del NDK estable antes de compilar
-          sed -i 's/^[# ]*android.ndk =.*/android.ndk = 25b/' buildozer.spec
+          # Forzamos solo una arquitectura para que no explote la memoria
+          sed -i 's/^[# ]*android.archs =.*/android.archs = arm64-v8a/' buildozer.spec
+          # Aceptamos licencias y compilamos
           yes | buildozer -v android debug
