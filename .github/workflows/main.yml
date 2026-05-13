@@ -16,7 +16,10 @@ jobs:
       - name: Build with Buildozer
         run: |
           export PATH=$PATH:$HOME/.local/bin
-          # Forzamos Python 3.11 y NDK 25b (el combo que no falla)
-          sed -i 's/^[# ]*python3 ==.*/python3 == 3.11.7/' buildozer.spec
+          # Forzamos la estabilidad en el .spec
           sed -i 's/^[# ]*android.ndk =.*/android.ndk = 25b/' buildozer.spec
+          sed -i 's/^[# ]*android.api =.*/android.api = 33/' buildozer.spec
+          sed -i 's/^[# ]*python3 ==.*/python3 == 3.11.7/' buildozer.spec
+          # Limpieza total antes de arrancar
+          buildozer android clean
           yes | buildozer -v android debug
