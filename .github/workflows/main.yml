@@ -16,9 +16,5 @@ jobs:
       - name: Build with Buildozer
         run: |
           export PATH=$PATH:$HOME/.local/bin
-          # Forzamos la versión del NDK en el archivo de configuración antes de empezar
-          sed -i 's/^[# ]*android.ndk =.*/android.ndk = 25b/' buildozer.spec
-          sed -i 's/^[# ]*android.api =.*/android.api = 33/' buildozer.spec
-          # Limpiamos basura de intentos fallidos
-          rm -rf .buildozer/android/platform/android-ndk-r28c
+          # Forzamos la aceptación de licencias y compilamos
           yes | buildozer -v android debug
