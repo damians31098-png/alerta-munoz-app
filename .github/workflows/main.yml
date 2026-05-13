@@ -16,7 +16,7 @@ jobs:
       - name: Build with Buildozer
         run: |
           export PATH=$PATH:$HOME/.local/bin
-          # Forzamos la estabilidad para que no use Python 3.14
+          # Forzamos Python 3.11 para que no use la versión 3.14 experimental
           sed -i 's/^[# ]*python3 ==.*/python3 == 3.11.7/' buildozer.spec
           sed -i 's/^[# ]*android.ndk =.*/android.ndk = 25b/' buildozer.spec
           yes | buildozer -v android debug
